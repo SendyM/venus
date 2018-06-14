@@ -63,7 +63,7 @@
                             </ul>
                         </div>
                         <!-- 左边菜单收起时的显示文字 -->
-                        <div class="logo-element">morpho
+                        <div class="logo-element">Venus
                         </div>
                     </li>
                     <!-- 菜单 -->

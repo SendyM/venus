@@ -109,7 +109,7 @@
 			一般来讲，这些就是我们要的文件。 -->
 		<property name="packagesToScan">
 			<list>
-				<value>com.max256.</value>
+				<value>com.max.</value>
 				<value>com.bstek.uflo.model*</value>
 			</list>
 		</property>

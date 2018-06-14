@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="fns" uri="http://www.max256.com/morpho/tags/functions" %>
+<%@taglib prefix="fns" uri="http://www.myweixin.club/venus/tags/functions" %>
 <html>
 <head>
     <title>HttpSession管理</title>

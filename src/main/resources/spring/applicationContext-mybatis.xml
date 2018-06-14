@@ -113,8 +113,8 @@
 			</array> </property> -->
 
 		<property name="typeAliasesPackage"
-			value="com.max256.morpho.common.entity
-				   ,com.max256.morpho.sys.entity" />
+			value="com.max.venus.common.entity
+				   ,com.max.venus.sys.entity" />
 
 		<!-- 插件配置 可以在这里配置也可以在mybatis的配置文件里配置 -->
 		<property name="plugins">
@@ -142,7 +142,7 @@
 	<bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- 逗号分隔可以写多个 -->
 		<property name="basePackage"
-			value="com.max256.morpho.**.dao
+			value="com.max.venus.**.dao
         									,tk.mybatis.mapper.common" />
 		<property name="markerInterface" value="tk.mybatis.mapper.common.Mapper" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
@@ -211,13 +211,13 @@
 	<!-- 声明式事务切面 ,只配置了common模块的,其他业务模块另写多个本配置 -->
 	<aop:config>
 		<!-- 第一个*代表所有的返回值类型；第二个*代表所有的类；第三个*代表类所有方法；..代表子或者孙子包；最后一个..代表所有的参数 -->
-		<!-- <aop:pointcut id="transactionPointcut" expression=" (execution(* com.max256.morpho.common.service..*Impl.*(..))) 
-			OR (execution(* com.max256.morpho.module.sys.service..*Impl.*(..))) OR 
-			(execution(* com.max256.morpho.module.reporter.service..*Impl.*(..))) 
+		<!-- <aop:pointcut id="transactionPointcut" expression=" (execution(* com.max.venus.common.service..*Impl.*(..)))
+			OR (execution(* com.max.venus.module.sys.service..*Impl.*(..))) OR
+			(execution(* com.max.venus.module.reporter.service..*Impl.*(..)))
 			" /> -->
 		<aop:pointcut id="transactionPointcut"
 			expression="
-			(execution(* com.max256.morpho..service..*Impl.*(..)))
+			(execution(* com.max.venus..service..*Impl.*(..)))
 			" />
 		<aop:advisor pointcut-ref="transactionPointcut"
 			advice-ref="transactionAdvice" order="1" />
@@ -231,7 +231,7 @@
 		scope="prototype">
 		<property name="patterns">
 			<list>
-				<value>com.max256.morpho.*.service.*</value>
+				<value>com.max.venus.*.service.*</value>
 			</list>
 		</property>
 	</bean>

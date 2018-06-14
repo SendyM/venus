@@ -8,7 +8,7 @@
 <%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
-<%@ taglib prefix="fns" uri="http://www.max256.com/morpho/tags/functions" %>
+<%@ taglib prefix="fns" uri="http://www.myweixin.club/venus/tags/functions" %>
 <%--本文件是系统页面引用内容 如需个性化修改这里就可以--%>
 <%	
 	String path = request.getContextPath();

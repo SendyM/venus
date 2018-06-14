@@ -91,8 +91,8 @@
     <bean id= "facadeMonitoringAdvisor" class="net.bull.javamelody.MonitoringSpringAdvisor" >
          <property name ="pointcut" >
                  <bean class="org.springframework.aop.support.JdkRegexpMethodPointcut" >
-                         <property name ="pattern" value="com.max256.*.*" />
-                         <!--正则表达式　com.max256.*.* 意思是对应com.max256.*.*包下的所有类的所有方法-->
+                         <property name ="pattern" value="com.max.*.*" />
+                         <!--正则表达式　com.max.*.* 意思是对应com.max.*.*包下的所有类的所有方法-->
                  </bean>
          </property>
 	</bean>
@@ -117,14 +117,14 @@
 
 
 	<!-- 组件扫描不扫描controller层  这层交由springMVC单独扫描-->
-	<context:component-scan base-package="com.max256.morpho">
+	<context:component-scan base-package="com.max.venus">
    		 <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
     
 	<!-- 这个工具类目前仅用于shiro标签库的属性注入使用 特此标记 -->
-	<bean class="com.max256.morpho.common.util.SpringUtils"/>
+	<bean class="com.max.venus.common.util.SpringUtils"/>
 	
 	<!-- springfox配置类加入ioc容器 -->
-	<bean class="com.max256.morpho.common.config.SpringfoxConfig"/>  
+	<bean class="com.max.venus.common.config.SpringfoxConfig"/>
 
 </beans>

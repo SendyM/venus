@@ -27,8 +27,8 @@
     <bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut" scope="prototype">
         <property name="patterns">
             <list>
-                <value>com.max256.morpho.*.dao.*</value>
-                <value>com.max256.morpho.*.service.impl.*</value>
+                <value>com.max.venus.*.dao.*</value>
+                <value>com.max.venus.*.service.impl.*</value>
             </list>
         </property>
     </bean>

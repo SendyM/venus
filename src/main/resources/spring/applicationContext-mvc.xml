@@ -46,7 +46,7 @@
 		<property name="order" value="0" />
 	</bean>
 	<!-- 字符串转换时间戳 -->
-    <bean id="stringToTimestamp" class="com.max256.morpho.common.web.converter.StringToTimestamp"></bean>
+    <bean id="stringToTimestamp" class="com.max.venus.common.web.converter.StringToTimestamp"></bean>
     <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
         <property name="converters">
             <set>
@@ -79,8 +79,8 @@
         	此处注册了一个@CurrentUser参数解析器。如之前的IndexController，从request获取shiro sysUser拦截器放入的当前登录User对象。
          -->
         <mvc:argument-resolvers>
-            <bean class="com.max256.morpho.common.security.shiro.bind.method.CurrentUserMethodArgumentResolver"/>
-            <bean class="com.max256.morpho.common.security.shiro.bind.method.RequestMessageMethodArgumentResolver"/>
+            <bean class="com.max.venus.common.security.shiro.bind.method.CurrentUserMethodArgumentResolver"/>
+            <bean class="com.max.venus.common.security.shiro.bind.method.RequestMessageMethodArgumentResolver"/>
         </mvc:argument-resolvers>
         
         
@@ -130,7 +130,7 @@
 	
     
    	<!-- 组件扫描只扫描controller层 -->
-	<context:component-scan base-package="com.max256.morpho;cn.afterturn.easypoi.view" use-default-filters="false">
+	<context:component-scan base-package="com.max.venus;cn.afterturn.easypoi.view" use-default-filters="false">
 	    <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	    <!-- 即把@ControllerAdvice注解内部使用@ExceptionHandler、@InitBinder、@ModelAttribute注解的方法应用到所有的 @RequestMapping注解的方法。
 	    	  非常简单，不过只有当使用@ExceptionHandler最有用，另外两个用处不大。 -->
@@ -179,10 +179,10 @@
 	
 	<!-- 在springMVC层做统一异常处理 -->
     <!-- 自定义统一异常处理解析器-->
-	<bean id="myExceptionResolver" class="com.max256.morpho.common.exception.MyExceptionResolver"/>
+	<bean id="myExceptionResolver" class="com.max.venus.common.exception.MyExceptionResolver"/>
 	
 	<!-- ApplicationContextUtil工具类 -->
-	<bean class="com.max256.morpho.common.util.ApplicationContextUtils" />
+	<bean class="com.max.venus.common.util.ApplicationContextUtils" />
 	
 	
 
@@ -194,14 +194,14 @@
 			日志拦截器 
 			<mvc:mapping path="/home/**" />
 			<mvc:mapping path="/backstage/**" />
-			<bean class="com.max256.morpho.common.web.interceptor.LogInterceptor"></bean>
+			<bean class="com.max.venus.common.web.interceptor.LogInterceptor"></bean>
 		</mvc:interceptor>	
 	</mvc:interceptors> -->
 	
 
 	<!-- sysResourceHandlerSpringContextListener处理资源注解 -->
 	<!-- <bean id="sysResHandlerSpringContextListener"
-		class="com.max256.morpho.common.web.listener.SysResHandlerSpringContextListener">
+		class="com.max.venus.common.web.listener.SysResHandlerSpringContextListener">
 		<property name="generateFlag" value="${sysResource.generateFlag}" />
 	</bean> -->
 	

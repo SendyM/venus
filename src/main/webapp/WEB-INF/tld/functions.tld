@@ -9,12 +9,12 @@
     <!-- 短名 -->
     <short-name>fns</short-name>
     <!-- url -->
-    <uri>http://www.max256.com/morpho/tags/functions</uri>
+    <uri>http://www.myweixin.club/venus/tags/functions</uri>
 	<!-- 以下是el函数定义-->
     <function>
         <description>判断资源对象是否在资源字符串集合中</description>
         <name>in</name>
-        <function-class>com.max256.morpho.common.security.shiro.taglib.Functions</function-class>
+        <function-class>com.max.venus.common.security.shiro.taglib.Functions</function-class>
         <function-signature>boolean in(java.lang.String,java.lang.Object)</function-signature>
     </function>
 
@@ -22,44 +22,44 @@
     <function>
         <description>根据id显示角色名称</description>
         <name>roleName</name>
-        <function-class>com.max256.morpho.common.security.shiro.taglib.Functions</function-class>
+        <function-class>com.max.venus.common.security.shiro.taglib.Functions</function-class>
         <function-signature>java.lang.String roleName(java.lang.String)</function-signature>
     </function>
     <function>
         <description>根据id列表显示多个角色名称</description>
         <name>roleNames</name>
-        <function-class>com.max256.morpho.common.security.shiro.taglib.Functions</function-class>
+        <function-class>com.max.venus.common.security.shiro.taglib.Functions</function-class>
         <function-signature>java.lang.String roleNames(java.lang.String)</function-signature>
     </function>
 
     <function>
         <description>根据id显示资源名称</description>
         <name>resourceName</name>
-        <function-class>com.max256.morpho.common.security.shiro.taglib.Functions</function-class>
+        <function-class>com.max.venus.common.security.shiro.taglib.Functions</function-class>
         <function-signature>java.lang.String resourceName(java.lang.String)</function-signature>
     </function>
     <function>
         <description>根据id列表显示多个资源名称</description>
         <name>resourceNames</name>
-        <function-class>com.max256.morpho.common.security.shiro.taglib.Functions</function-class>
+        <function-class>com.max.venus.common.security.shiro.taglib.Functions</function-class>
         <function-signature>java.lang.String resourceNames(java.lang.String)</function-signature>
     </function>
     <function>
         <description>用户身份</description>
         <name>principal</name>
-        <function-class>com.max256.morpho.common.security.shiro.taglib.Functions</function-class>
+        <function-class>com.max.venus.common.security.shiro.taglib.Functions</function-class>
         <function-signature>java.lang.String principal(org.apache.shiro.session.Session)</function-signature>
     </function>
     <function>
         <description>是否强制退出</description>
         <name>isForceLogout</name>
-        <function-class>com.max256.morpho.common.security.shiro.taglib.Functions</function-class>
+        <function-class>com.max.venus.common.security.shiro.taglib.Functions</function-class>
         <function-signature>boolean isForceLogout(org.apache.shiro.session.Session)</function-signature>
     </function>
     <!-- 以下是标签定义 -->
     <tag>  
         <name>table</name>  <!--BootstrapTable-->
-        <tagclass>com.max256.morpho.common.web.tag.BootstrapTableTag</tagclass>  
+        <tagclass>com.max.venus.common.web.tag.BootstrapTableTag</tagclass>
         <bodycontent>JSP</bodycontent>  
         <info>bootstrap-table表格实例</info>  
         <attribute>  <!---这里表示的是这个tag的一个参数-->  
@@ -71,7 +71,7 @@
     </tag>  
     <tag>  
         <name>button</name>  <!-- 按钮 -->
-        <tagclass>com.max256.morpho.common.web.tag.BootstrapButtonTag</tagclass>  
+        <tagclass>com.max.venus.common.web.tag.BootstrapButtonTag</tagclass>
         <bodycontent>JSP</bodycontent>  
         <info>bootstrap-table表格实例</info>  
         <attribute>  <!---这里表示的是这个tag的一个参数-->  
@@ -113,7 +113,7 @@
     </tag> 
     <tag>  
         <name>textInputQuery</name>  <!--构建查询框-->
-        <tagclass>com.max256.morpho.common.web.tag.InputQueryTag</tagclass>  
+        <tagclass>com.max.venus.common.web.tag.InputQueryTag</tagclass>
         <bodycontent>JSP</bodycontent>  
         <info>构建查询框</info>  
         <attribute>  <!---这里表示的是这个tag的一个参数-->  
@@ -143,7 +143,7 @@
     </tag>   
 	<tag>  
         <name>dateInputQuery</name>  <!--构建查询框-->
-        <tagclass>com.max256.morpho.common.web.tag.BootstrapDateInputTag</tagclass>  
+        <tagclass>com.max.venus.common.web.tag.BootstrapDateInputTag</tagclass>
         <bodycontent>JSP</bodycontent>  
         <info>构建查询框日期类型</info>  
         <attribute>  <!---这里表示的是这个tag的一个参数-->  
@@ -185,7 +185,7 @@
     </tag>  
     <tag>  
         <name>selectInputQuery</name>  <!--BootstrapSelectQueryTag-->
-        <tagclass>com.max256.morpho.common.web.tag.BootstrapSelectQueryTag</tagclass>  
+        <tagclass>com.max.venus.common.web.tag.BootstrapSelectQueryTag</tagclass>
         <bodycontent>JSP</bodycontent>  
         <info>BootstrapSelectQueryTag表格实例</info>  
         <attribute>  <!---这里表示的是这个tag的一个参数-->  

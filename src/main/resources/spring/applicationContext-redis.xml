@@ -52,7 +52,7 @@
 		<property name="connectionFactory" ref="jedisConnectionFactory" />
 	</bean>
 
-	<bean id="redisManager" class="com.max256.morpho.common.cache.redis.RedisManager">
+	<bean id="redisManager" class="com.max.venus.common.cache.redis.RedisManager">
 		<property name="jedisPool" ref="jedisPool" />
 	</bean>
 </beans>

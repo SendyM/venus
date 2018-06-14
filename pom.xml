@@ -2,29 +2,29 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<!--根元素下的第一个子元素modelVersion指定了当前POM模型的版本，对于maven2及maven3来说，它只能是4.0.0，本项目使用maven3构建 -->
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.max256</groupId>
-	<artifactId>morpho</artifactId>
+	<groupId>com.max</groupId>
+	<artifactId>venus</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.0-Release</version>
-	<name>morpho</name>
-	<url>http://www.max256.com</url>
+	<name>venus</name>
+	<url>http://www.myweixin.club</url>
 	<!-- 项目的组织信息 -->
 	<organization>
-		<name>fbf</name>
-		<url>www.max256.com</url>
+		<name>Sendy</name>
+		<url>www.myweixin.club</url>
 	</organization>
 	<!-- 项目的开发者信息 -->
 	<developers>
 		<developer>
-			<name>fbf</name>
-			<email>help@max256.com</email>
+			<name>Sendy</name>
+			<email>daijkl@qq.com</email>
 		</developer>
 	</developers>
 	<!-- 项目贡献者信息 -->
 	<contributors>
 		<contributor>
-			<name>fbf</name>
-			<email>help@max256.com</email>
+			<name>Sendy</name>
+			<email>daijkl@qq.com</email>
 		</contributor>
 	</contributors>
 	<!-- 许可证信息 -->
@@ -1423,7 +1423,7 @@
 				<configuration>
 					<url>http://localhost:8080/manager</url> <!-- tomcat管理路径 -->
 					<server>Tomcat8</server> <!-- 与settings.xml文件中Server的id相同 -->
-					<path>/morpho</path> <!-- 应用的部署位置 -->
+					<path>/venus</path> <!-- 应用的部署位置 -->
 					<charset>UTF-8</charset>
 					<port>8080</port>
 					<uriEncoding>UTF-8</uriEncoding>

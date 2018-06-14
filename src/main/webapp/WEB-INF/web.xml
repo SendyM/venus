@@ -5,7 +5,7 @@
   http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
   version="3.1"  metadata-complete="false">
   	<!-- 本项目要求servlet3.1以上容器tomcat8.0.X以上 -->
-  	<display-name>morpho</display-name>
+  	<display-name>venus</display-name>
 	<!--——————————————————————————————————————————————————————context-param配置——————————————————————————————————————————————————————-->
 	<!--上下文参数用于配置spring核心的 applicationContext.xml -->
 	<context-param>
@@ -27,7 +27,7 @@
      -->
     <context-param>
 		 <param-name>webAppRootKey</param-name>
-		 <param-value>morpho.root</param-value>
+		 <param-value>venus.root</param-value>
 	</context-param>
 	<!--—————————————————————————————————————————————————————— servlet配置 ——————————————————————————————————————————————————————-->
 	<!-- druid的监控servlet -->
@@ -131,9 +131,13 @@
 	 <!-- 系统路径参数 -->
  	<servlet>
         <servlet-name>PathVarServlet</servlet-name>
-    	<servlet-class>com.max256.morpho.common.web.servlet.PathVarServlet</servlet-class>
+    	<servlet-class>com.max.venus.common.web.servlet.PathVarServlet</servlet-class>
    	 	<load-on-startup>1</load-on-startup>
  	</servlet>
+	<servlet-mapping>
+		<servlet-name>PathVarServlet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
 	<!--—————————————————————————————————————————————————————— filter过滤器配置——————————————————————————————————————————————————————-->
 	  <filter>
 	       <filter-name>gzipFilter</filter-name>  
@@ -180,7 +184,7 @@
 	<!-- XSSFilter防止注入,放在最前边！！ -->
 	<filter>
 		<filter-name>XSSFilter</filter-name>
-		<filter-class>com.max256.morpho.common.web.filter.XSSFilter</filter-class>
+		<filter-class>com.max.venus.common.web.filter.XSSFilter</filter-class>
 		<async-supported>true</async-supported>
 		<init-param>
 			<param-name>encoding</param-name>
@@ -268,7 +272,7 @@
 	<filter>
 		 <filter-name>LogThreadContextFilter</filter-name>
 		 <async-supported>true</async-supported>
-   		 <filter-class>com.max256.morpho.common.web.filter.LogThreadContextFilter</filter-class>
+   		 <filter-class>com.max.venus.common.web.filter.LogThreadContextFilter</filter-class>
    		 <!-- 经常需要排除一些不必要的url，比如.js,/jslib/等等。配置在init-param中。 -->
     		<init-param>
        		 	<param-name>appKey</param-name>
@@ -313,7 +317,7 @@
 		<!-- 如果是用cookie记录session的话 -->
 		<!-- <init-param>
 			<param-name>principalCookieName</param-name>
-			<param-value>morpho.cookieid</param-value>
+			<param-value>venus.cookieid</param-value>
 		</init-param> -->
  	</filter>
   	<filter-mapping>
@@ -365,7 +369,7 @@
 	<filter>
 		<filter-name>ajaxSessionTimeout</filter-name>
 		<async-supported>true</async-supported>
-		<filter-class>com.max256.morpho.common.web.filter.AjaxSessionTimeoutFilter</filter-class>
+		<filter-class>com.max.venus.common.web.filter.AjaxSessionTimeoutFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>ajaxSessionTimeout</filter-name>
@@ -376,9 +380,9 @@
 	<filter>  
 	  <filter-name>CaptchaFilter</filter-name>  
 	  <async-supported>true</async-supported>
-	  <filter-class>   
-	   com.max256.morpho.common.web.filter.CaptchaFilter
-	  </filter-class>  
+	  <filter-class>
+		  com.max.venus.common.web.filter.CaptchaFilter
+	  </filter-class>
 	  </filter>  
 	  <filter-mapping>  
 	    <filter-name>CaptchaFilter</filter-name>  
@@ -389,7 +393,7 @@
 <!-- 	<filter>  
 	  <filter-name>DebugRequestAndResponseFilter</filter-name>  
 	  <filter-class>   
-	   com.max256.morpho.common.web.filter.DebugRequestAndResponseFilter
+	   com.max.venus.common.web.filter.DebugRequestAndResponseFilter
 	  </filter-class>  
 	  </filter>  
 	  <filter-mapping>  
@@ -458,7 +462,7 @@
 
 	<!--自定义加强功能的监听器  -->
 	<listener>
-		<listener-class>com.max256.morpho.common.web.listener.MyContextListener</listener-class>
+		<listener-class>com.max.venus.common.web.listener.MyContextListener</listener-class>
 	</listener>
 		
 	<!--——————————————————————————————————————————————————————————————session配置 ————————————————————————————————————————————————————————————————-->
@@ -505,7 +509,7 @@
 	</jsp-config> -->
 	<jsp-config>
 		<taglib>  
-			<taglib-uri>http://www.max256.com/morpho/tags/functions</taglib-uri>  
+			<taglib-uri>http://www.myweixin.club/venus/tags/functions</taglib-uri>
 			<taglib-location>/WEB-INF/tld/functions.tld</taglib-location>  
 		</taglib> 
 	</jsp-config>
