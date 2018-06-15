@@ -37,9 +37,12 @@ public class SysResHandle {
 		//准备返回数据
 		List<SysResource> list=new ArrayList<SysResource>();
 		//1分析类上的注解
-		if(clazz.isAnnotationPresent(Controller.class)//必须是Controller
-				&& clazz.isAnnotationPresent(SysRes.class)//必须有自定义SysResource注解
-				&& clazz.isAnnotationPresent(RequiresPermissions.class)){//必须有自定义RequiresPermissions注解
+		if(clazz.isAnnotationPresent(Controller.class)
+				//必须是Controller
+				&& clazz.isAnnotationPresent(SysRes.class)
+				//必须有自定义SysResource注解
+				&& clazz.isAnnotationPresent(RequiresPermissions.class)){
+			//必须有自定义RequiresPermissions注解
 			//取得注解对象
 			SysRes sysResource = (SysRes) clazz.getAnnotation(SysRes.class);
 			RequiresPermissions requiresPermissions = (RequiresPermissions) clazz.getAnnotation(RequiresPermissions.class);

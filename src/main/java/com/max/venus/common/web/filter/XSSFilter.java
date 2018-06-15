@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -18,23 +19,24 @@ import java.util.regex.Pattern;
  * @author Sendy
  */
 
-public class XSSFilter implements Filter {
+public class XssFilter implements Filter {
 	private String encoding = "UTF-8";
 	private boolean forceEncoding = false;
-	// 过滤路径
-	List<String> filterPaths = new ArrayList<String>();
-	// 日志
-	private static final Logger logger = LoggerFactory.getLogger(XSSFilter.class);
+	/**
+	 * 过滤路径
+	 */
+	private List<String> filterPaths = new ArrayList<>();
+	private static final Logger logger = LoggerFactory.getLogger(XssFilter.class);
 
 
-	public XSSFilter() {
+	public XssFilter() {
 	}
 
 	@Override
 	public void destroy() {
 	}
 
-	/*
+	/**
 	 * 过滤方法
 	 */
 	@Override
@@ -50,8 +52,7 @@ public class XSSFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		// 编码判断
-		if (this.encoding != null
-				&& (this.forceEncoding || request.getCharacterEncoding() == null)) {
+		if (this.encoding != null && (this.forceEncoding || request.getCharacterEncoding() == null)) {
 			request.setCharacterEncoding(this.encoding);
 			if (this.forceEncoding) {
 				response.setCharacterEncoding(this.encoding);
@@ -128,9 +129,7 @@ public class XSSFilter implements Filter {
 				.getInitParameter("filterPaths"));
 		if (!StringUtils.isBlank(filterPaths)) {
 			String[] filterPath = filterPaths.split(",");
-			for (String path : filterPath) {
-				this.filterPaths.add(path);
-			}
+			this.filterPaths.addAll( Arrays.asList( filterPath ) );
 		}
 
 	}

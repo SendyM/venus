@@ -9,6 +9,21 @@
 	<!-- 本配置是集群环境下session共享的解决方案 本配置依赖于applicationContext-redis的配置文件 -->
 	<description>Shiro安全配置(redis集群版本)</description>
 
+	<!-- 导入spring整合redis配置-->
+	<import resource="applicationContext-redis.xml"/>
+
+	<bean id="configProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<!-- systemPropertiesModeName意味着可以从jvm虚拟机的参数中获得配置信息 -->
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+		<property name="ignoreUnresolvablePlaceholders" value="true"/>
+		<!-- 数小代表优先级高 这里要高过 uflo和ureport的优先级 他们的值是100 我们的值才可以覆盖他们-->
+		<property name="order" value="1"/>
+		<property name="locations">
+			<list>
+				<value>classpath:config.properties</value>
+			</list>
+		</property>
+	</bean>
 
 	<!--安全管理器（shiro的核心） -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">

@@ -88,8 +88,9 @@ public class RedisManager {
             jedis = getJedis();
             jedis.select(dbIndex);
             jedis.set(key, value);
-            if (expireTime > 0)
-                jedis.expire(key, expireTime);
+            if (expireTime > 0) {
+				jedis.expire( key, expireTime );
+			}
         } catch (Exception e) {
             throw e;
         } finally {

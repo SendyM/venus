@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	 xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
-    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 	<description>此配置文件是数据源和mybatis相关 </description>
 	<!-- 此配置文件是数据源相关 -->
 	<!-- druid数据源拦截器 -->
@@ -17,12 +17,12 @@
 	</bean>
 	<!-- 防御sql注入的filter:wall -->
 	<bean id="wall-filter" class="com.alibaba.druid.wall.WallFilter">
-		<property name="config" ref="wallConfig"></property>
+		<property name="config" ref="wallConfig"/>
 	</bean>
 	<!-- 数据库类型 目录 mysql META-INF/druid/wall/mysql Oracle META-INF/druid/wall/oracle 
 		sqlserver META-INF/druid/wall/sqlserver postgres META-INF/druid/wall/postgres -->
 	<bean id="wallConfig" class="com.alibaba.druid.wall.WallConfig">
-		<property name="dir" value="META-INF/druid/wall/mysql"></property>
+		<property name="dir" value="META-INF/druid/wall/mysql"/>
 		<!-- 是否允许一次执行多条语句，缺省关闭,这里打开允许 -->
 		<property name="multiStatementAllow" value="true" />
 	</bean>
@@ -241,8 +241,8 @@
 	</aop:config>
 	
 	<!-- 配置 spring 的 JdbcTemplate 提供另一种风格的jdbc访问方式-->  
-	<bean id="jdbcTemplate"  class="org.springframework.jdbc.core.JdbcTemplate">  
-	    <property name="dataSource" ref="druidDataSource"></property>  
+	<bean id="jdbcTemplate"  class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="druidDataSource"/>
 	</bean>  
 
 

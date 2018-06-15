@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="true"
-	monitoring="autodetect" dynamicConfig="true">
-
-
-	<!-- version 2.5之前版本的Ehcache允许任意数量的名称相同的缓存管理器(相同的配置资源)存在于一个JVM。 Ehcache 
+<ehcache>
+	<!-- version 2.5之前版本的Ehcache允许任意数量的名称相同的缓存管理器(相同的配置资源)存在于一个JVM。 Ehcache
 		2.5和更高版本不允许存在多个名称相同的缓存管理器在相同的JVM。缓存管理器()构造函数创建单体缓存管理器可以违反这条规则 如果项目是hibernate的,
 		以前的时候ehcache可能不是单例的，因为shiro里面也使用到了ehcache做缓存， 
 		和hibernate的ehcache缓存配置有冲突，所以需要对hibernate的ehcache部分做些调整 

@@ -184,7 +184,7 @@
 	<!-- XSSFilter防止注入,放在最前边！！ -->
 	<filter>
 		<filter-name>XSSFilter</filter-name>
-		<filter-class>com.max.venus.common.web.filter.XSSFilter</filter-class>
+		<filter-class>com.max.venus.common.web.filter.XssFilter</filter-class>
 		<async-supported>true</async-supported>
 		<init-param>
 			<param-name>encoding</param-name>

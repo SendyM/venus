@@ -38,15 +38,14 @@ public abstract class AbstractBaseController {
 	 * 
 	 */
 	public HttpServletRequest getRequest() {
-		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder
+		return  ((ServletRequestAttributes) RequestContextHolder
 				.getRequestAttributes()).getRequest();
-		return request;
 	}
 
 	
 	/**
 	 * 取得当前的登陆用户
-	 * @return
+	 * @return SysUser
 	 */
 	protected SysUser getSysUser() {
 		return ShiroUtils.getSysUser();
@@ -54,7 +53,7 @@ public abstract class AbstractBaseController {
 
 	/**
 	 * 取得当前的用户id
-	 * @return
+	 * @return String
 	 */
 	protected String getUserId() {
 		return getSysUser().getUserId();

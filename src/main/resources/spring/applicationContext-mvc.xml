@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
-    xmlns:aop="http://www.springframework.org/schema/aop" xmlns:websocket="http://www.springframework.org/schema/websocket"
-	xsi:schemaLocation="
-	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd 
-	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
-	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd 
-	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd 
-	http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd
-	">
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	<!--springMVC配置文件  -->
 	
 	<!-- 导入springMVC和shiro整合的配置文件-->
@@ -20,7 +19,7 @@
 	<bean id="configProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
        <!-- systemPropertiesModeName意味着可以从jvm虚拟机的参数中获得配置信息 -->
 		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
-		<property name="ignoreUnresolvablePlaceholders" value="true"></property>
+		<property name="ignoreUnresolvablePlaceholders" value="true"/>
 		<!-- 数小代表优先级高 这里要高过 uflo和ureport的优先级 他们的值是100 我们的值才可以覆盖他们-->
 		<property name="order" value="1"/>
         <property name="locations">
@@ -46,7 +45,7 @@
 		<property name="order" value="0" />
 	</bean>
 	<!-- 字符串转换时间戳 -->
-    <bean id="stringToTimestamp" class="com.max.venus.common.web.converter.StringToTimestamp"></bean>
+	<bean id="stringToTimestamp" class="com.max.venus.common.web.converter.StringToTimestamp"/>
     <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
         <property name="converters">
             <set>
@@ -57,7 +56,7 @@
 	<!--mvc注解驱动  -->
     <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" conversion-service="conversionService">
     	<!--将StringHttpMessageConverter的默认编码设为UTF-8 ，为了防止乱码，保持全站UTF-8格式 -->
-        <mvc:message-converters register-defaults="true">
+        <mvc:message-converters>
             <bean class="org.springframework.http.converter.StringHttpMessageConverter">
                 <constructor-arg value="UTF-8"/>
             </bean>

@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ page isELIgnored="false" %>
-<%@ page import="org.apache.commons.lang3.StringUtils"%>
-<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--本文件是登录页和后台框架主页的引用内容 如果您需要更换自己风格的后台主页 修改这里就可以--%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

@@ -31,8 +31,8 @@ public class DbSearcher
     /**
      * header blocks buffer 
     */
-    private long[] HeaderSip = null;
-    private int[]  HeaderPtr = null;
+    private long[] headersip = null;
+    private int[] headerptr = null;
     private int headerLength;
 
     /**
@@ -51,10 +51,10 @@ public class DbSearcher
     /**
      * construct class
      * 
-     * @param   bdConfig
-     * @param   dbFile
-     * @throws  FileNotFoundException 
-     * @throws URISyntaxException 
+     * @param   dbConfig DbConfig
+     * @param   dbFile String
+     * @throws  FileNotFoundException f
+     * @throws URISyntaxException  u
     */
     public DbSearcher( DbConfig dbConfig, String dbFile ) throws FileNotFoundException, URISyntaxException
     {
@@ -65,8 +65,8 @@ public class DbSearcher
     /**
      * get the region with a int ip address with memory binary search algorithm
      *
-     * @param   ip
-     * @throws  IOException
+     * @param   ip long
+     * @throws  IOException i
     */
     public DataBlock memorySearch(long ip) throws IOException
     {
@@ -104,15 +104,17 @@ public class DbSearcher
         }
         
         //not matched
-        if ( dataptr == 0 ) return null;
+        if ( dataptr == 0 ) {
+            return null;
+        }
         
         //get the data
         int dataLen = (int)((dataptr >> 24) & 0xFF);
         int dataPtr = (int)((dataptr & 0x00FFFFFF));
-        int city_id = (int)Util.getIntLong(dbBinStr, dataPtr);
+        int cityId = (int)Util.getIntLong(dbBinStr, dataPtr);
         String region = new String(dbBinStr, dataPtr + 4, dataLen - 4, "UTF-8");
         
-        return new DataBlock(city_id, region, dataPtr);
+        return new DataBlock(cityId, region, dataPtr);
     }
     
     /**
@@ -131,10 +133,10 @@ public class DbSearcher
     /**
      * get by index ptr
      * 
-     * @param   indexPtr
-     * @throws  IOException 
+     * @param   ptr
+     * @throws  IOException  i
     */
-    public DataBlock getByIndexPtr( long ptr ) throws IOException
+    private DataBlock getByIndexPtr(long ptr) throws IOException
     {
         raf.seek(ptr);
         byte[] buffer = new byte[12];
@@ -150,39 +152,41 @@ public class DbSearcher
         byte[] data = new byte[dataLen];
         raf.readFully(data, 0, data.length);
         
-        int city_id = (int)Util.getIntLong(data, 0);
+        int cityId = (int)Util.getIntLong(data, 0);
         String region = new String(data, 4, data.length - 4, "UTF-8");
         
-        return new DataBlock(city_id, region, dataPtr);
+        return new DataBlock(cityId, region, dataPtr);
     }
 
     /**
      * get the region with a int ip address with b-tree algorithm
      * 
-     * @param   ip
-     * @throws  IOException 
+     * @param   ip long
+     * @throws  IOException  i
     */
     public DataBlock btreeSearch( long ip ) throws IOException
     {
         //check and load the header
-        if ( HeaderSip == null )  {
-            raf.seek(8L);    //pass the super block
+        if ( headersip == null )  {
+            raf.seek(8L);
+            //pass the super block
             //byte[] b = new byte[dbConfig.getTotalHeaderSize()];
             byte[] b = new byte[4096];
             raf.readFully(b, 0, b.length);
             
             //fill the header
-            int len = b.length >> 3, idx = 0;  //b.lenght / 8
-            HeaderSip = new long[len];
-            HeaderPtr = new int [len];
+            int len = b.length >> 3, idx = 0;
+            //b.lenght / 8
+            headersip = new long[len];
+            headerptr = new int [len];
             long startIp, dataPtr;
             for ( int i = 0; i < b.length; i += 8 ) {
                 startIp = Util.getIntLong(b, i);
                 dataPtr = Util.getIntLong(b, i + 4);
                 if ( dataPtr == 0 ) break;
                 
-                HeaderSip[idx] = startIp;
-                HeaderPtr[idx] = (int)dataPtr;
+                headersip[idx] = startIp;
+                headerptr[idx] = (int)dataPtr;
                 idx++;
             }
             
@@ -190,10 +194,10 @@ public class DbSearcher
         }
         
         //1. define the index block with the binary search
-        if ( ip == HeaderSip[0] ) {
-            return getByIndexPtr(HeaderPtr[0]);
-        } else if ( ip == HeaderSip[headerLength-1] ) {
-            return getByIndexPtr(HeaderPtr[headerLength-1]);
+        if ( ip == headersip[0] ) {
+            return getByIndexPtr( headerptr[0]);
+        } else if ( ip == headersip[headerLength-1] ) {
+            return getByIndexPtr( headerptr[headerLength-1]);
         }
         
         int l = 0, h = headerLength, sptr = 0, eptr = 0;
@@ -201,38 +205,38 @@ public class DbSearcher
             int m = (l + h) >> 1;
             
             //perfetc matched, just return it
-            if ( ip == HeaderSip[m] ) {
+            if ( ip == headersip[m] ) {
                 if ( m > 0 ) {
-                    sptr = HeaderPtr[m-1];
-                    eptr = HeaderPtr[m  ];
+                    sptr = headerptr[m-1];
+                    eptr = headerptr[m  ];
                 } else {
-                    sptr = HeaderPtr[m ];
-                    eptr = HeaderPtr[m+1];
+                    sptr = headerptr[m ];
+                    eptr = headerptr[m+1];
                 }
                 
                 break;
             }
             
             //less then the middle value
-            if ( ip < HeaderSip[m] ) {
+            if ( ip < headersip[m] ) {
                 if ( m == 0 ) {
-                    sptr = HeaderPtr[m  ];
-                    eptr = HeaderPtr[m+1];
+                    sptr = headerptr[m  ];
+                    eptr = headerptr[m+1];
                     break;
-                } else if ( ip > HeaderSip[m-1] ) {
-                    sptr = HeaderPtr[m-1];
-                    eptr = HeaderPtr[m  ];
+                } else if ( ip > headersip[m-1] ) {
+                    sptr = headerptr[m-1];
+                    eptr = headerptr[m  ];
                     break;
                 }
                 h = m - 1;
             } else {
                 if ( m == headerLength - 1 ) {
-                    sptr = HeaderPtr[m-1];
-                    eptr = HeaderPtr[m  ];
+                    sptr = headerptr[m-1];
+                    eptr = headerptr[m  ];
                     break;
-                } else if ( ip <= HeaderSip[m+1] ) {
-                    sptr = HeaderPtr[m  ];
-                    eptr = HeaderPtr[m+1];
+                } else if ( ip <= headersip[m+1] ) {
+                    sptr = headerptr[m  ];
+                    eptr = headerptr[m+1];
                     break;
                 }
                 l = m + 1;
@@ -244,7 +248,8 @@ public class DbSearcher
         
         //2. search the index blocks to define the data
         int blockLen = eptr - sptr, blen = IndexBlock.getIndexBlockLength();
-        byte[] iBuffer = new byte[blockLen + blen];    //include the right border block
+        byte[] iBuffer = new byte[blockLen + blen];
+        //include the right border block
         raf.seek(sptr);
         raf.readFully(iBuffer, 0, iBuffer.length);
         
@@ -268,7 +273,9 @@ public class DbSearcher
         }
         
         //not matched
-        if ( dataptr == 0 ) return null;
+        if ( dataptr == 0 ) {
+            return null;
+        }
         
         //3. get the data
         int dataLen = (int)((dataptr >> 24) & 0xFF);
@@ -321,7 +328,8 @@ public class DbSearcher
         long sip, eip, dataptr = 0;
         while ( l <= h ) {
             int m = (l + h) >> 1;
-            raf.seek(firstIndexPtr + m * blen);    //set the file pointer
+            raf.seek(firstIndexPtr + m * blen);
+            //set the file pointer
             raf.readFully(buffer, 0, buffer.length);
             sip = Util.getIntLong(buffer, 0);
             if ( ip < sip ) {
@@ -338,7 +346,9 @@ public class DbSearcher
         }
         
         //not matched
-        if ( dataptr == 0 ) return null;
+        if ( dataptr == 0 ) {
+            return null;
+        }
         
         //get the data
         int dataLen = (int)((dataptr >> 24) & 0xFF);
@@ -383,8 +393,9 @@ public class DbSearcher
     */
     public void close() throws IOException
     {
-        HeaderSip = null;    //let gc do its work
-        HeaderPtr = null;
+        headersip = null;
+        //let gc do its work
+        headerptr = null;
         dbBinStr  = null;
         raf.close();
     }

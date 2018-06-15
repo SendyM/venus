@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	 xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
-    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	<description>此配置文件是JTA和Atomikos相关</description>
 	<!-- 注意：本系统默认不启用JTA配置  关于JTA您需要明白可能是会损失性能来增加分布式事务处理能力的一种方式 请您自行评估是否启用JTA方式进行分布式事务 -->
 	<!-- 
@@ -15,7 +12,7 @@
 	
 	详细步骤：
 	1修改druid数据源为 如果有多个数据源类似配置
-	<!-- 该bean只有在使用分布式事务时使用 -->
+	<!- 该bean只有在使用分布式事务时使用 -->
 	<!-- 
 	<bean id="druidDataSource" class="com.atomikos.jdbc.AtomikosDataSourceBean" init-method="init" destroy-method="close">
         <property name="uniqueResourceName" value="druidDataSourceMaster"/>
@@ -32,7 +29,7 @@
 		这两项 其中com.atomikos.icatch.jta.hibernate4.AtomikosPlatform兼容hibernate4和5放心使用
 		取消 <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager>该事务管理器
 		增加以下事务管理器
-		<!-- 分布式事务配置 -->
+		<!- 分布式事务配置 -->
 		<!-- 
 		<bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager"
 			init-method="init" destroy-method="close">

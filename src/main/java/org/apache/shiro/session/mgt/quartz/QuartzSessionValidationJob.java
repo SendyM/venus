@@ -9,9 +9,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**使用这个版本 就不要在引用官方shiro-quartz的包 那个依赖1.x系列的quartz
- * QuartzSessionValidationJob 用以替换shiro-quartz文件用来支持quartz.x系列版本 fbf 20160225打包
+ * QuartzSessionValidationJob 用以替换shiro-quartz文件用来支持quartz.x系列版本 Sendy 20160225打包
  * 基于Quartz 2.* 版本的实现
  * 参考自http://blog.csdn.net/oshusheng1/article/details/49885875
+ * @author Sendy
  */
 public class QuartzSessionValidationJob implements Job {
 
@@ -20,13 +21,15 @@ public class QuartzSessionValidationJob implements Job {
 	 */
 	public static final String SESSION_MANAGER_KEY = "sessionManager";
 
-	/*--------------------------------------------
+	/**--------------------------------------------
 	|    I N S T A N C E   V A R I A B L E S    |
 	============================================*/
 	private static final Logger log = LoggerFactory
 			.getLogger(QuartzSessionValidationJob.class);
 
-	/*--------------------------------------------
+	/*-------------------------------------
+
+	-------
 	|         C O N S T R U C T O R S           |
 	============================================*/
 

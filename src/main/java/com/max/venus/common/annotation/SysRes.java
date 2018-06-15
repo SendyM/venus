@@ -23,21 +23,21 @@ public @interface SysRes {
 	 * 
 	 * @return String id
 	 */
-	public String id() default "";
+	 String id() default "";
 
 	/**
 	 * 资源的名称
 	 * 
 	 * @return String value
 	 */
-	public String name() default "";
+	 String name() default "";
 	
 	/**
 	 * 资源的有效性 默认1 有效 0无效
 	 * 
 	 * @return String value
 	 */
-	public String isValid() default "1";
+	 String isValid() default "1";
 
 
 	/**
@@ -45,7 +45,7 @@ public @interface SysRes {
 	 * 
 	 * @return boolean value
 	 */
-	public String parentId() default "";
+	 String parentId() default "";
 	
 
 	/**
@@ -53,7 +53,7 @@ public @interface SysRes {
 	 * 
 	 * @return boolean value
 	 */
-	public String parentIds() default ""; 
+	 String parentIds() default "";
 
 
 	/**
@@ -61,6 +61,6 @@ public @interface SysRes {
 	 * 默认按钮
 	 * @return String value
 	 */
-	public String type() default Constants.BUTTON;
+	 String type() default Constants.BUTTON;
 
 }
